@@ -148,8 +148,10 @@ public class Aplikasi {
                  case 5:{
                       System.out.println("---------------- MENU HITUNG STOK BERDASARKAN JENIS BARANG  --------------------");
                       Integer carijenisbarang;
-                      Integer hasill = null;
-                      int i;
+                      int i,a;
+                      int tottal = 0;
+                       ArrayList<Integer> arl = new ArrayList<Integer>();
+                       ArrayList<Integer> has = new ArrayList<Integer>();
                        System.out.print("Masukkan Jenis Barang yang ingin di cari [1]Sabun mandi [2]Sabun muka [3]Pewangi pakaian : ");
                        carijenisbarang = input.nextInt();
                        boolean hasil = Barang.contains(carijenisbarang);
@@ -157,13 +159,20 @@ public class Aplikasi {
                        if (hasil = true) {
                          for(i=0; i<Barang.size();i++){
                              if(Barang.get(i).getJenis_barang().equals(carijenisbarang)){
-                                 hasill =  Barang.get(i).getStok_barang();
-                           
+//                                  System.out.println(Barang.get(i).getStok_barang());
+                                     arl.add(Barang.get(i).getStok_barang());
+                                       has.add(arl.get(i));
                              }
-                              System.out.println("Total stok barang dengan jenis : "+Barang.get(i).getLempar_jenis()+" Adalah : "+(hasill+hasill));      
-                                System.out.println("-----------------------------------------------------------------");
-                                break;
                          }
+                         for(a =0; a<has.size(); a++){
+                             tottal = tottal + has.get(a);
+                         }
+                           System.out.println("----------------------------------------------------------");
+                             for(i=0; i<Barang.size(); i++){
+                                       System.out.println("Total Barang dengan jenis "+Barang.get(i).getLempar_jenis()+" adalah : "+tottal);
+                                       System.out.println("----------------------------------------------------------");
+                                 break;
+                           }
                      }
                        break;
                  }
